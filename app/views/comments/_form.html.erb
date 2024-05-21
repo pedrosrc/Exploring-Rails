@@ -1,0 +1,22 @@
+<div class="flex p-6 gap-3">
+  <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <p class=" text-white">
+      User:<br>
+      <%= form.text_field :commenter, class: "w-72 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg", placeholder: "Write your user" %>
+    </p>
+
+    <p  class=" text-white">
+      Comment:<br>
+      <%= form.text_area :body, class: "w-72 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg", placeholder: "Write your comment" %>
+    </p>
+
+    <p>
+      <%= form.label :status, class: "text-white" %><br>
+      <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+    </p>
+
+    <button class="rounded-md bg-green-600 px-3 py-1.5 mt-6 text-sm font-semibold w-72">
+      <%= form.submit %>
+    </button>
+  <% end %>
+</div>

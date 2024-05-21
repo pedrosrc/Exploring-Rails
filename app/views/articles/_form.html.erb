@@ -1,0 +1,31 @@
+<%= form_with model: @article do |form| %>
+  <div class="text-white">
+    <%= form.label :title%><br>
+    <%= form.text_field :title,  class: "block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300"  %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="text-white mt-6">
+    <%= form.label :body %><br>
+    <%= form.rich_text_area :body, class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 bg-white" %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mt-6">
+    <%= form.label :status, class: "text-white" %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, selected:
+    article.status || 'public' %>
+  </div>
+
+  <div class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mt-6 text-sm font-semibold">
+    <%= form.submit %>
+  </div>
+
+  <a href="/articles" class="flex w-full justify-center rounded-md text-white bg-black px-3 py-1.5 mt-6 text-sm font-semibold">
+    Back to Home
+  </a>
+<% end %>

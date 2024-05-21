@@ -1,0 +1,18 @@
+<% unless comment.archived? %>
+  
+  <div class="mt-4 border p-6 border-slate-950">
+    <dt class="text-xl font-medium leading-6 text-white">
+      <strong><%= comment.commenter %></strong>
+    </dt>
+    <dd class="mt-1 leading-6 text-white ">
+      <strong>Comment:</strong> <%= comment.body %>
+    </dd>
+
+    <p class="rounded-md bg-red-600 px-3 py-1.5 mt-6 text-sm font-semibold w-36 text-center text-white">
+      <%= link_to "Delete Comment", [comment.article, comment], 
+      data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </p>
+  </div>
+
+<% end %>
