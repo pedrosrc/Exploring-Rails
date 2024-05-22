@@ -1,24 +1,33 @@
-# README
+# Exploring Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is a simple Rails application with Tailwind, which I am exploring and studying to learn about MVC (Model-View-Controller) in this wonderful framework.
 
-Things you may want to cover:
+## 💻 Requirements
 
-* Ruby version
+- Did you install the latest version of `<Ruby>` 
+- Do you have a machine running `<Windows / Linux / Mac>`
 
-* System dependencies
+## 🚀 Using the repository
+1- Clone the repository
+```
+git clone git@github.com:pedrosrc/Exploring-Rails.git
+```
 
-* Configuration
+2- Install the dependecies
 
-* Database creation
+```
+bundle install
+```
+3- Run the migrations
+```
+rails db:migrate
+```
 
-* Database initialization
+4- Run the porject
 
-* How to run the test suite
+```
+rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+As mentioned, this is a study repository where I applied the CRUD method to this application for Articles. In it, I was able to explore methods such as Turbo and its views. I found their behavior very interesting, and it is a small step towards something grand within Ruby on Rails
