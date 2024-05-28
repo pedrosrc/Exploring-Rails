@@ -1,0 +1,11 @@
+<div class="flex flex-col items-center rounded-lg justify-center m-4 px-6 py-8 mx-auto bg-slate-900">
+  <div>
+    <img class="w-56 h-56 rounded-full" src="https://random.dog/2539bc07-5097-4409-a4fa-6f8e885c42ad.jpg" alt="user photo">
+  </div>
+  <div class="py-2">
+    <h3 class="font-bold text-2xl text-white mb-1"><%= current_user.name %></h3>
+    <p class="font-bold text-x text-white mb-1"><%= current_user.email %></p>
+    <p class="font-bold text-sm text-white mb-1">Número de logins: <%= current_user.sign_in_count %></p>
+  </div>         
+</div>
+

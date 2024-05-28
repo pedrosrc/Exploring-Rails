@@ -12,6 +12,9 @@
   </head>
 
   <body class=" bg-slate-900">
+    <% if user_signed_in? %>
+      <%= render "articles/nav" %>
+    <% end %>
     <main class="container mx-auto mt-28 px-5 flex bg-slate-800 rounded-md">
       <%= yield %>
     </main>
