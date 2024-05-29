@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -14,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.create!(article_params)
 
     respond_to do |format|
       if @article.save
@@ -28,19 +27,22 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    if article.update(article_params)
-      redirect_to article
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    article.destroy
+    @article.destroy!
 
     redirect_to root_path, status: :see_other
   end

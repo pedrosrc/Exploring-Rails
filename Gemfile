@@ -72,3 +72,4 @@ gem "omniauth"
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'ruby-vips', '~> 2.2', '>= 2.2.1'
