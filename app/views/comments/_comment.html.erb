@@ -1,13 +1,17 @@
 <% unless comment.archived? %>
   
-  <div class="mt-4 border p-6 border-slate-950">
-    <dt class="text-xl font-medium leading-6 text-white">
-      <strong><%= comment.commenter %></strong>
-    </dt>
+  <div class="mt-4 p-6 bg-slate-700 rounded-lg hover:bg-slate-950 shadow-lg transition">
+    <div class="flex items-center gap-2">
+      <img src="https://random.dog/57b5e2ea-a790-4235-9910-ba692b08c211.jpg" alt="Foto de Cachorro" class="w-10 h-10 rounded-lg">
+      <dt class="text-xl font-medium leading-6 text-white">
+        <strong><%= comment.commenter %></strong>
+        <p class="font-bold text-sm text-white"> <%= time_tag comment.created_at, "data-local": "time-ago" %></p>
+      </dt>
+    </div>
+    
     <dd class="mt-1 leading-6 text-white ">
-      <strong>Comment:</strong> <%= comment.body %>
+      <%= comment.body %>
     </dd>
-
     <p class="rounded-md bg-red-600 px-3 py-1.5 mt-6 text-sm font-semibold w-36 text-center text-white">
       <%= link_to "Delete Comment", [comment.article, comment], 
       data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}

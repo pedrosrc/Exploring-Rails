@@ -1,13 +1,11 @@
 class ArticlesController < ApplicationController
-  # http_basic_authenticate_with name: "Dj", password: "123",
-  # except: [:index, :show]
+  before_action :authenticate_user!, :set_article, only: %i[ show edit update destroy ]
 
   def index
     @articles = Article.all
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -15,37 +13,46 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.create!(article_params)
 
-    if @article.save
-      redirect_to @article
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    @article.destroy!
 
     redirect_to root_path, status: :see_other
   end
 
   private
+
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
     def article_params
       params.require(:article).permit(:title, :body, :status)
     end

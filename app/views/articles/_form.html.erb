@@ -1,16 +1,16 @@
-<%= form_with model: @article do |form| %>
-  <div class="text-white">
-    <%= form.label :title%><br>
-    <%= form.text_field :title,  class: "block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300"  %>
-    <% @article.errors.full_messages_for(:title).each do |message| %>
+<%= form_with(model: article) do |form| %>
+  <div class="mt-6">
+    <%= form.label :title, class: "text-white" %><br>
+    <%= form.text_field :title,  class: "block w-full rounded-md border p-2 text-gray-900 shadow-sm "  %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div class="text-white mt-6">
-    <%= form.label :body %><br>
-    <%= form.rich_text_area :body, class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 bg-white" %>
-    <% @article.errors.full_messages_for(:body).each do |message| %>
+  <div class="mt-6 text-white">
+    <%= form.label :body, class: "text-white" %><br>
+    <%= form.rich_text_area :body, class: "block w-full rounded-md border p-2 text-gray-900 shadow-sm bg-white"%>
+    <% article.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
